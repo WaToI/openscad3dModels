@@ -1,0 +1,33 @@
+J105ShieldBase();
+module J105ShieldBase(
+y=38,
+z=4,
+d=43.5,
+id=23.5,
+id2=4
+){	
+	difference(){
+		intersection(){
+			translate([3,0,0])
+				union(){
+					cube([y,y,z],center=true);
+				}
+			difference(){
+				cylinder(z,d1=d,d2=d,$fn=36,center=true);
+				cylinder(z+1,d1=id,d2=id,$fn=36,center=true);
+			}
+		}
+	translate([-id/2-3,id/2+1,0])
+		cylinder(z+1,d1=id2,d2=id2,$fn=36,center=true);		
+	translate([-id/2-3,-id/2-1,0])
+		cylinder(z+1,d1=id2,d2=id2,$fn=36,center=true);		
+	}
+	intersection(){
+		cylinder(z,d1=d-6,d2=d-6,$fn=36,center=true);
+		translate([-id/2-4,0,0])
+			cube([6,20,z],$fn=36,center=true);
+	}
+	translate([+id/2+2,id/2-3,4])
+		cylinder(12,d1=id2,d2=id2,$fn=36,center=true);		
+	
+}
